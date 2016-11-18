@@ -1,4 +1,4 @@
-package cl.telematica.android.certamen3;
+package cl.telematica.android.certamen3.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

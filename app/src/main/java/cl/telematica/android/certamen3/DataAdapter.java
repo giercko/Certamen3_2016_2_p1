@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import cl.telematica.android.certamen3.Models.Feed;
+
 /**
  * Created by franciscocabezas on 11/18/16.
  */

@@ -1,8 +1,6 @@
-package cl.telematica.android.certamen3;
+package cl.telematica.android.certamen3.Presenter;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.view.menu.MenuPresenter;
+import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -15,34 +13,33 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import cl.telematica.android.certamen3.MainActivity;
 import cl.telematica.android.certamen3.Models.Feed;
-import cl.telematica.android.certamen3.Presenter.MainPresenter;
-import cl.telematica.android.certamen3.Presenter.MainPresenterImpl;
+import cl.telematica.android.certamen3.MyAsyncTaskExecutor;
+import cl.telematica.android.certamen3.R;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by neo_free on 18/11/2016.
+ */
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private MainPresenter presenter;
+public class MainPresenterImpl implements  MainPresenter{
+    private Context ctx;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        presenter = new MainPresenterImpl(mRecyclerView, mLayoutManager, this);
-        //createMyRecyclerView();
-        //MyAsyncTaskExecutor.getInstance().executeMyAsynctask(this, mRecyclerView);
+    public MainPresenterImpl(final RecyclerView mRecyclerView,final RecyclerView.LayoutManager mLayoutManager, Context ctx){
+        this.ctx = ctx;
+        createMyRecyclerView(mRecyclerView, mLayoutManager);
+        MyAsyncTaskExecutor.getInstance().executeMyAsynctask((MainActivity) ctx,mRecyclerView, this);
     }
 
-    /*public void createMyRecyclerView() {
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mRecyclerView.setHasFixedSize(true);
 
-        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+    @Override
+    public void createMyRecyclerView(RecyclerView mRecyclerView, RecyclerView.LayoutManager mLayoutManager) {
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(ctx, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
     }
 
+    @Override
     public List<Feed> getFeeds(String result) {
         List<Feed> feeds = new ArrayList<>();
         try {
@@ -73,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+   // @Override
+    /*public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
@@ -91,10 +88,9 @@ public class MainActivity extends AppCompatActivity {
             /**
              * You should manage the action to show the favorite items saved by the user
              */
-            /*return true;
+        /*    return true;
         }
 
         return super.onOptionsItemSelected(item);
     }*/
-
 }
