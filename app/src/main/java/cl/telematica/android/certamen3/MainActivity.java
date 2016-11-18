@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             return feeds;
         }
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
             /**
              * You should manage the action to show the favorite items saved by the user
              */
-            /*return true;
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
 }
