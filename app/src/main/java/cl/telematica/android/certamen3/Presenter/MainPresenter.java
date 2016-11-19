@@ -17,7 +17,4 @@ public interface MainPresenter{
 
     public void createMyRecyclerView(RecyclerView mRecyclerView, RecyclerView.LayoutManager mLayoutManager);
     public List<Feed> getFeeds(String result);
-   // public boolean onCreateOptionsMenu(Menu menu);
-
-    //public boolean onOptionsItemSelected(MenuItem item);
 }
