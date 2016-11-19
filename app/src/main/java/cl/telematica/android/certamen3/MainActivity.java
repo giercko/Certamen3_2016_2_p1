@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         dbInstance = new Database(this);
-        presenter = new MainPresenterImpl(mRecyclerView, mLayoutManager, this, dbInstance);
+        presenter = new MainPresenterImpl(mRecyclerView, mLayoutManager, this, dbInstance, false);
 
     }
 
@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
             /**
              * You should manage the action to show the favorite items saved by the user
              */
+
+            presenter = new MainPresenterImpl(mRecyclerView, mLayoutManager, this, dbInstance, true);
             return true;
         }
 
